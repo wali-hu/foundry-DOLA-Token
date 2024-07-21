@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "./AggregatorV3Interface.sol";
+import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract MockPriceFeed is AggregatorV3Interface {
     int256 private currentPrice;
@@ -10,15 +10,15 @@ contract MockPriceFeed is AggregatorV3Interface {
         currentPrice = _initialPrice;
     }
 
-    function decimals() public view override returns (uint8) {
+    function decimals() public pure override returns (uint8) {
         return 18;
     }
 
-    function description() public view override returns (string memory) {
+    function description() public pure override returns (string memory) {
         return "Mock Price Feed";
     }
 
-    function version() public view override returns (uint256) {
+    function version() public pure override returns (uint256) {
         return 1;
     }
 
@@ -38,7 +38,7 @@ contract MockPriceFeed is AggregatorV3Interface {
     }
 
     function getRoundData(
-        uint80 _roundId
+        uint80 /* _roundId */
     )
         public
         view
